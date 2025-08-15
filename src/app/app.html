@@ -1,0 +1,193 @@
+<nav class="fixed top-6 left-1/2 transform -translate-x-1/2 z-50 animate-float">
+  <div class="bg-white/20 backdrop-blur-2xl rounded-full px-8 py-4 shadow-[0_25px_50px_-12px_rgba(0,0,0,0.25)] border-2 border-white/40 shadow-white/20 ring-2 ring-white/50 ring-inset drop-shadow-[0_20px_25px_-5px_rgba(0,0,0,0.1)]">
+    <div class="flex space-x-6">
+      <button 
+        *ngFor="let section of sections; let i = index" 
+        (click)="scrollToSection(section.id)"
+        class="text-sm font-medium text-gray-700 hover:text-blue-600 transition-colors duration-300 cursor-pointer"
+        [class.text-blue-600]="activeSection === section.id">
+        {{ section.name }}
+      </button>
+    </div>
+  </div>
+</nav>
+
+
+<div class="min-h-screen bg-gradient-to-br from-blue-50/80 via-indigo-50/60 to-purple-50/80 relative overflow-hidden">
+  <div class="absolute inset-0">
+    <div class="absolute top-20 left-10 w-72 h-72 bg-blue-400/20 rounded-full blur-3xl"></div>
+    <div class="absolute top-40 right-20 w-96 h-96 bg-purple-400/20 rounded-full blur-3xl"></div>
+    <div class="absolute bottom-20 left-1/3 w-80 h-80 bg-indigo-400/20 rounded-full blur-3xl"></div>
+  </div>
+  
+
+  <section id="hero" class="pt-32 pb-20 px-4 relative z-10">
+    <div class="max-w-4xl mx-auto text-center animate-fade-in">
+      <div class="mb-8 animate-scale-in">
+        <div class="w-48 h-48 mx-auto rounded-full bg-gradient-to-br from-blue-400/80 to-purple-500/80 p-1 shadow-2xl backdrop-blur-sm">
+          <div class="w-full h-full rounded-full bg-white/90 backdrop-blur-sm flex items-center justify-center overflow-hidden">
+            <img 
+              src="/IMG_3516.JPG" 
+              alt="Profile Picture" 
+              class="w-full h-full object-cover rounded-full"
+              onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
+            />
+            <i class="pi pi-user text-6xl text-gray-600" style="display: none;"></i>
+          </div>
+        </div>
+      </div>
+      <h1 class="text-5xl font-bold text-gray-800 mb-4 animate-slide-up">Maxim Lamas</h1>
+      <p class="text-xl text-gray-600 mb-8 animate-slide-up">Full Stack Developer & Creative Problem Solver :D</p>
+      <div class="flex justify-center space-x-4 animate-slide-up">
+        <button (click)="downloadCV()" class="bg-blue-600 text-white px-6 py-3 rounded-full hover:bg-blue-700 transition-colors duration-300 flex items-center">
+          <i class="pi pi-download mr-2"></i>
+          Download CV
+        </button>
+        <button (click)="contactMe()" class="border border-blue-600 text-blue-600 px-6 py-3 rounded-full hover:bg-blue-600 hover:text-white transition-colors duration-300 flex items-center">
+          <i class="pi pi-envelope mr-2"></i>
+          Contact Me
+        </button>
+      </div>
+    </div>
+  </section>
+
+
+  <section id="bio" class="py-20 px-4 relative z-10">
+    <div class="max-w-4xl mx-auto">
+      <h2 class="text-3xl font-bold text-gray-800 mb-8 text-center animate-slide-up">About Me</h2>
+      <div class="bg-white/20 backdrop-blur-xl rounded-2xl p-8 shadow-2xl border border-white/30 shadow-white/10 animate-slide-up">
+        <p class="text-lg text-gray-700 leading-relaxed mb-6">
+          I'm a passionate full-stack developer that loves creating beautiful, functional, and user-friendly web applications.
+          I'm also fond of videogames, so i'm currently working on one of my own and a game engine built from 0. 
+          I love turning complex problems into simple, beautiful, and intuitive solutions.
+        </p>
+        <p class="text-lg text-gray-700 leading-relaxed">
+          When I'm not coding, i often find myself either listening to music or playing videogames, thi i love reading too , 
+          I believe in writing clean, maintainable code 
+          and staying up-to-date with the latest industry trends.
+        </p>
+      </div>
+    </div>
+  </section>
+
+
+  <section id="skills" class="py-20 px-4 relative z-10">
+    <div class="max-w-4xl mx-auto">
+      <h2 class="text-3xl font-bold text-gray-800 mb-12 text-center animate-slide-up">Skills & Technologies</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div 
+          *ngFor="let category of skillCategories" 
+          class="bg-white/20 backdrop-blur-xl rounded-xl p-6 shadow-2xl border border-white/30 shadow-white/10 hover:shadow-2xl hover:bg-white/30 transition-all duration-300 animate-slide-up">
+          <div class="text-3xl mb-4" [class]="category.color">
+            <i [class]="category.icon"></i>
+          </div>
+          <h3 class="text-xl font-semibold text-gray-800 mb-3">{{ category.title }}</h3>
+          <div class="flex flex-wrap gap-2">
+            <span 
+              *ngFor="let skill of category.skills" 
+              class="px-3 py-1 rounded-full text-sm"
+              [class]="skill.color">
+              {{ skill.name }}
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <section id="hobbies" class="py-20 px-4 relative z-10">
+    <div class="max-w-4xl mx-auto">
+      <h2 class="text-3xl font-bold text-gray-800 mb-12 text-center animate-slide-up">Hobbies & Interests</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <div class="bg-white/20 backdrop-blur-xl rounded-xl p-6 shadow-2xl border border-white/30 shadow-white/10 animate-slide-up">
+          <div class="text-4xl mb-4 text-blue-500">
+            <i class="pi pi-book"></i>
+          </div>
+          <h3 class="text-xl font-semibold text-gray-800 mb-3">Reading</h3>
+          <p class="text-gray-600">I love diving into tech books, sci-fi novels, and philosophy, my favorite book is "No Longer Human" by Osamu Dazai.</p>
+        </div>
+        
+        <div class="bg-white/20 backdrop-blur-xl rounded-xl p-6 shadow-2xl border border-white/30 shadow-white/10 animate-slide-up">
+          <div class="text-4xl mb-4 text-green-500">
+            <i class="pi pi-play"></i>
+          </div>
+          <h3 class="text-xl font-semibold text-gray-800 mb-3">Gaming</h3>
+          <p class="text-gray-600"> RPG games are my favorites, my favorite games are Zelda, Final Fantasy and NieR Automata :D.</p>
+        </div>
+        
+        <div class="bg-white/20 backdrop-blur-xl rounded-xl p-6 shadow-2xl border border-white/30 shadow-white/10 animate-slide-up">
+          <div class="text-4xl mb-4 text-orange-500">
+            <i class="pi pi-code"></i>
+          </div>
+          <h3 class="text-xl font-semibold text-gray-800 mb-3">Game Dev</h3>
+          <p class="text-gray-600">As i've said before, i'm currently working on a game engine and a game and im passionate about creating worlds anf stories for others to experience :D.</p>
+        </div>
+        
+        <div class="bg-white/20 backdrop-blur-xl rounded-xl p-6 shadow-2xl border border-white/30 shadow-white/10 animate-slide-up">
+          <div class="text-4xl mb-4 text-purple-500">
+            <i class="pi pi-volume-up"></i>
+          </div>
+          <h3 class="text-xl font-semibold text-gray-800 mb-3">Music</h3>
+          <p class="text-gray-600">I play guitar and piano. Music helps me think creatively, my favorite artist is Siddhartha!.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="facts" class="py-20 px-4 relative z-10">
+    <div class="max-w-4xl mx-auto">
+      <h2 class="text-3xl font-bold text-gray-800 mb-12 text-center animate-slide-up">Fun Facts About Me</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div class="bg-gradient-to-br from-blue-500/80 to-purple-600/80 backdrop-blur-xl text-white rounded-xl p-6 shadow-2xl border border-white/20 shadow-white/10 animate-slide-up">
+          <div class="flex items-center mb-2">
+            <i class="pi pi-coffee text-2xl mr-3"></i>
+            <div class="text-2xl font-bold">Anyone said coffee?</div>
+          </div>
+          <p class="text-blue-100">I love coffee, despite the fact that i shouldnt drink it!</p>
+        </div>
+        
+        <div class="bg-gradient-to-br from-green-500/80 to-teal-600/80 backdrop-blur-xl text-white rounded-xl p-6 shadow-2xl border border-white/20 shadow-white/10 animate-slide-up">
+          <div class="flex items-center mb-2">
+            <i class="pi pi-volume-up text-2xl mr-3"></i>
+            <div class="text-2xl font-bold">All day listener</div>
+          </div>
+          <p class="text-green-100">I pretty much end up listening to music all day!</p>
+        </div>
+        
+        <div class="bg-gradient-to-br from-orange-500/80 to-red-600/80 backdrop-blur-xl text-white rounded-xl p-6 shadow-2xl border border-white/20 shadow-white/10 animate-slide-up">
+          <div class="flex items-center mb-2">
+            <i class="pi pi-code text-2xl mr-3"></i>
+            <div class="text-2xl font-bold">Anyone said C++?</div>
+          </div>
+          <p class="text-orange-100">My favorite language is C++ as i've pretty much used it for my own game engine!</p>
+        </div>
+        
+        <div class="bg-gradient-to-br from-purple-500/80 to-pink-600/80 backdrop-blur-xl text-white rounded-xl p-6 shadow-2xl border border-white/20 shadow-white/10 animate-slide-up">
+          <div class="flex items-center mb-2">
+            <i class="pi pi-play text-2xl mr-3"></i>
+            <div class="text-2xl font-bold">Gamer for life</div>
+          </div>
+          <p class="text-purple-100">I've been gaming since I was a kid and it's what inspired me to become a developer!</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact" class="py-20 px-4 relative z-10">
+    <div class="max-w-4xl mx-auto text-center">
+      <h2 class="text-3xl font-bold text-gray-800 mb-8 animate-slide-up">Let's Connect!</h2>
+      <p class="text-lg text-gray-600 mb-8 animate-slide-up">I'm always open to new opportunities and interesting projects.</p>
+      <div class="flex justify-center space-x-6 animate-slide-up">
+        <button (click)="contactMe()" class="bg-blue-600 text-white px-8 py-3 rounded-full hover:bg-blue-700 transition-colors duration-300 flex items-center">
+          <i class="pi pi-send mr-2"></i>
+          Get In Touch
+        </button>
+        <a href="#" class="border border-blue-600 text-blue-600 px-8 py-3 rounded-full hover:bg-blue-600 hover:text-white transition-colors duration-300 flex items-center">
+          <i class="pi pi-folder-open mr-2"></i>
+          View Portfolio
+        </a>
+      </div>
+    </div>
+  </section>
+</div>
