@@ -1,0 +1,121 @@
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-4px);
+  }
+}
+
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+
+/* Enhanced backdrop blur for browsers that support it */
+@supports (backdrop-filter: blur(24px)) {
+  nav > div {
+    backdrop-filter: blur(24px);
+    -webkit-backdrop-filter: blur(24px);
+  }
+}
+
+/* Smooth transitions for all interactive elements */
+button {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Enhanced shadow on hover */
+nav > div:hover {
+  transform: translateY(-2px);
+}
+
+/* Mobile hamburger menu styles */
+.hamburger-line {
+  width: 20px;
+  height: 2px;
+  background: linear-gradient(to right, #dc2626, #9333ea);
+  border-radius: 2px;
+  margin: 2px 0;
+  transform-origin: center;
+}
+
+/* Hamburger animation when active */
+.active .top-line {
+  transform: rotate(45deg) translate(5px, 5px);
+}
+
+.active .middle-line {
+  opacity: 0;
+  transform: scale(0);
+}
+
+.active .bottom-line {
+  transform: rotate(-45deg) translate(5px, -5px);
+}
+
+/* Mobile menu animation */
+.mobile-menu {
+  max-height: 0;
+  opacity: 0;
+  transform: translateY(-10px);
+  pointer-events: none;
+}
+
+.mobile-menu.open {
+  max-height: 500px;
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
+/* Mobile menu items animation */
+.mobile-menu.open button {
+  animation: slideInFromTop 0.3s ease-out forwards;
+}
+
+.mobile-menu.open button:nth-child(1) { animation-delay: 0.1s; }
+.mobile-menu.open button:nth-child(2) { animation-delay: 0.15s; }
+.mobile-menu.open button:nth-child(3) { animation-delay: 0.2s; }
+.mobile-menu.open button:nth-child(4) { animation-delay: 0.25s; }
+.mobile-menu.open button:nth-child(5) { animation-delay: 0.3s; }
+.mobile-menu.open button:nth-child(6) { animation-delay: 0.35s; }
+.mobile-menu.open button:nth-child(7) { animation-delay: 0.4s; }
+.mobile-menu.open button:nth-child(8) { animation-delay: 0.45s; }
+
+@keyframes slideInFromTop {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  /* Ensure proper spacing on mobile */
+  nav {
+    top: 12px;
+  }
+
+  /* Mobile menu backdrop blur */
+  .mobile-menu {
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+  }
+}
+
+/* Extra small screens */
+@media (max-width: 480px) {
+  nav {
+    padding-left: 8px;
+    padding-right: 8px;
+  }
+
+  .mobile-menu button {
+    padding: 12px 16px;
+    font-size: 14px;
+  }
+}
